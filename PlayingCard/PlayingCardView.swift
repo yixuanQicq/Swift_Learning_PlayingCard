@@ -17,6 +17,19 @@ class PlayingCardView: UIView {
     @IBInspectable
     var isFaceUp: Bool = true { didSet{ setNeedsDisplay();setNeedsLayout() } }
     
+    var faceCardScale :CGFloat = SizeRatio.faceCardImageSizeToBoundsSize {
+        didSet {setNeedsDisplay()}
+    }
+    
+    @objc func adjustFaceCardScale(byHandlingGestureRecognizedBy recognizer: UIPinchGestureRecognizer){
+        switch recognizer.state {
+        case .changed, .ended: faceCardScale *= recognizer.scale
+            recognizer.scale = 1.0
+        default:
+            break
+        }
+    }
+    
     private func centeredAttributedString(_ string: String, fontSize: CGFloat) -> NSAttributedString{
         var font = UIFont.preferredFont(forTextStyle: .body).withSize(fontSize)
         font = UIFontMetrics(forTextStyle: .body).scaledFont(for: font)
@@ -123,7 +136,7 @@ class PlayingCardView: UIView {
         
         if isFaceUp{
             if let faceCardImage = UIImage(named: rankingString+suit, in: Bundle(for: self.classForCoder), compatibleWith: traitCollection){
-                faceCardImage.draw(in: bounds.zoom(by: SizeRatio.faceCardImageSizeToBoundsSize))
+                faceCardImage.draw(in: bounds.zoom(by: faceCardScale))
             } else{
                 drawPips()
             }
@@ -163,28 +176,28 @@ extension PlayingCardView{
     }
 }
 
-extension CGRect {
-    var leftHalf: CGRect {
-        return CGRect(x: minX, y: minY, width: width/2, height: height)
-    }
-    var rightHalf: CGRect {
-        return CGRect(x: midX, y: midY, width: width/2, height: height)
-    }
-    func insert(by size: CGSize) -> CGRect {
-        return insetBy(dx: size.width, dy: size.height)
-    }
-    func sized(to size: CGSize) -> CGRect {
-        return CGRect(origin: origin, size: size)
-    }
-    func  zoom(by scale: CGFloat) -> CGRect {
-        let newWidth = width*scale
-        let newHeight = height*scale
-        return insetBy(dx: (width - newWidth)/2, dy: (height - newHeight)/2)
+extension CGPoint {
+    func offsetBy(dx: CGFloat, dy: CGFloat) -> CGPoint {
+        return CGPoint(x: x + dx, y: y + dy)
     }
 }
 
-extension CGPoint{
-    func  offsetBy(dx: CGFloat, dy: CGFloat) -> CGPoint {
-        return CGPoint(x: x+dx, y: y+dy)
+extension CGRect {
+    func zoom(by zoomFactor: CGFloat) -> CGRect {
+        let zoomedWidth = size.width * zoomFactor
+        let zoomedHeight = size.height * zoomFactor
+        let originX = origin.x + (size.width - zoomedWidth) / 2
+        let originY = origin.y + (size.height - zoomedHeight) / 2
+        return CGRect(origin: CGPoint(x: originX,y: originY) , size: CGSize(width: zoomedWidth, height: zoomedHeight))
+    }
+    
+    var leftHalf: CGRect {
+        let width = size.width / 2
+        return CGRect(origin: origin, size: CGSize(width: width, height: size.height))
+    }
+    
+    var rightHalf: CGRect {
+        let width = size.width / 2
+        return CGRect(origin: CGPoint(x: origin.x + width, y: origin.y), size: CGSize(width: width, height: size.height))
     }
 }
