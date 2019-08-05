@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		114C22FD22F24E880007B76E /* PlayingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114C22FC22F24E880007B76E /* PlayingCardView.swift */; };
 		114C22FF22F276530007B76E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 114C22FE22F276530007B76E /* Assets.xcassets */; };
+		11AD80FD22F7BC6C00B208A2 /* CardBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AD80FC22F7BC6C00B208A2 /* CardBehavior.swift */; };
 		11DC1D1722F15872005FABED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC1D1622F15872005FABED /* AppDelegate.swift */; };
 		11DC1D1922F15872005FABED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC1D1822F15872005FABED /* ViewController.swift */; };
 		11DC1D1C22F15872005FABED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11DC1D1A22F15872005FABED /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		114C22FC22F24E880007B76E /* PlayingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCardView.swift; sourceTree = "<group>"; };
 		114C22FE22F276530007B76E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../../Desktop/乱七八糟/Assets.xcassets"; sourceTree = "<group>"; };
+		11AD80FC22F7BC6C00B208A2 /* CardBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBehavior.swift; sourceTree = "<group>"; };
 		11DC1D1322F15872005FABED /* PlayingCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayingCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11DC1D1622F15872005FABED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11DC1D1822F15872005FABED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			children = (
 				114C22FE22F276530007B76E /* Assets.xcassets */,
 				11DC1D1822F15872005FABED /* ViewController.swift */,
+				11AD80FC22F7BC6C00B208A2 /* CardBehavior.swift */,
 				114C22FC22F24E880007B76E /* PlayingCardView.swift */,
 				11DC1D1A22F15872005FABED /* Main.storyboard */,
 				11DC1D2922F15B32005FABED /* PlayingCard.swift */,
@@ -157,6 +160,7 @@
 				11DC1D2A22F15B32005FABED /* PlayingCard.swift in Sources */,
 				114C22FD22F24E880007B76E /* PlayingCardView.swift in Sources */,
 				11DC1D1722F15872005FABED /* AppDelegate.swift in Sources */,
+				11AD80FD22F7BC6C00B208A2 /* CardBehavior.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
